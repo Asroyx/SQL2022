@@ -29,6 +29,13 @@ ON Siparişler.MüşteriNO = Müşteriler.MüşteriNo --10
 	CROSS JOIN : Soldaki tablonun herbit satırı ile sağdaki tablonun
 	 her bir satırını eşleştirmek için kullanılır.
 	 SELECT * FROM SolTablo CROSS JOIN SağTablo
-  
-  
+
+Sipraiş vermemiş müşteriler ile beraber,
+sipariş vermemiş müşterileri de listeleyiniz
   */
+  SELECT Adı,Soyadı,SiparişNo
+  FROM Müşteriler INNER JOIN Siparişler
+  ON Müşteriler.MüşteriNo = Siparişler.MüşteriNO
+  ORDER BY SiparişNo ASC
+  -- Müşteriler tab. Birleştirme koşulunu sağlamayan kayıtlar isteniyor.
+  -- Müşteriler solda mı? sağda mı?
