@@ -87,10 +87,29 @@ DROP VIEW tümMüşteriveSiparişleriGör
 -- Her müşteri sorumlu olduğu kentin müşterilerini görüp
 -- Diğer kentleri görmesinii değiştirilmesini, silmesini
 -- engellemek istiyoruz. Bunun nasıl yaparız?
-SELECT * INTO istMüş FROM Müşteriler WHERE il='İstanbul'
-SELECT * INTO izmMüş FROM Müşteriler WHERE il='İzmir'
-SELECT * INTO ankMüş FROM Müşteriler WHERE il='Ankara'
-SELECT * FROM Müşteriler
-SELECT * FROM istMüş
-SELECT * FROM izmMüş
-SELECT * FROM ankMüş
+--SELECT * INTO istMüş FROM Müşteriler WHERE il='İstanbul'
+--SELECT * INTO izmMüş FROM Müşteriler WHERE il='İzmir'
+--SELECT * INTO ankMüş FROM Müşteriler WHERE il='Ankara'
+--SELECT * FROM Müşteriler
+--SELECT * FROM istMüş
+--SELECT * FROM izmMüş
+--SELECT * FROM ankMüş
+
+--Görünümü oluşturan koşulun sürekli kontrol edilmesi için 
+-- WITH CHECK OPTION eklenir 
+GO
+CREATE VIEW istanbulMüş
+AS
+SELECT * FROM Müşteriler WHERE il='İstanbul'
+WITH CHECK OPTION
+GO
+CREATE VIEW izmMüş
+AS
+SELECT * FROM Müşteriler WHERE il='İzmir'
+WITH CHECK OPTION
+GO
+CREATE VIEW ankMüş
+AS
+SELECT * FROM Müşteriler WHERE il='Ankara'
+WITH CHECK OPTION
+GO
