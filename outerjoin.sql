@@ -25,4 +25,10 @@ ON Siparişler.MüşteriNO = Müşteriler.MüşteriNo --10
   hem soldaki tablonun hem sağdaki tablonun
    birleştirme koşulunu sağlaMAYAN kayıtlarını da listeler
   SELECT * FROM Sağtablo RIGHT OUTER JOIN SolTablo ON Birleştirme Koşulu 
+3. Çapraz Birleştirme
+	CROSS JOIN : Soldaki tablonun herbit satırı ile sağdaki tablonun
+	 her bir satırını eşleştirmek için kullanılır.
+	 SELECT * FROM SolTablo CROSS JOIN SağTablo
+  
+  
   */
