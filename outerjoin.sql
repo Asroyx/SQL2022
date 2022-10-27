@@ -39,3 +39,21 @@ sipariş vermemiş müşterileri de listeleyiniz
   ORDER BY SiparişNo ASC
   -- Müşteriler tab. Birleştirme koşulunu sağlamayan kayıtlar isteniyor.
   -- Müşteriler solda mı? sağda mı?
+
+  --Sipariş vermemiş müşteriler ile beraber, (iç)
+  --Sipariş vermemiş müşteriler, (sol)
+  --Kimin verdiği belli olmayan siparişler (sağ)
+  SELECT Adı,Soyadı,SiparişNo
+  FROM Müşteriler FULL OUTER JOIN Siparişler
+  ON Müşteriler.MüşteriNo = Siparişler.MüşteriNO
+  ORDER BY SiparişNo ASC
+
+--Her bir müşteri ile her bir çalışanı eşleştiriniz
+SELECT COUNT(*) FROM Müşteriler --142
+SELECT COUNT(*) FROM Siparişler --87
+-- cross join satır sayısı 142*13 = 1846
+
+SELECT M.Adı+' '+M.Soyadı AS Müşteriler,
+C.Adı AS ÇalışanAdı,C.Soyadı AS ÇalışanSoyadı
+FROM Müşteriler AS M
+CROSS JOIN Çalışanlar AS C --1846
