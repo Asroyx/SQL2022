@@ -82,3 +82,15 @@ AS
   GO
 -- Görünümü silelim
 DROP VIEW tümMüşteriveSiparişleriGör
+
+-- 3 Büyük ile birer müşteri temsilcisi atanıyor.
+-- Her müşteri sorumlu olduğu kentin müşterilerini görüp
+-- Diğer kentleri görmesinii değiştirilmesini, silmesini
+-- engellemek istiyoruz. Bunun nasıl yaparız?
+SELECT * INTO istMüş FROM Müşteriler WHERE il='İstanbul'
+SELECT * INTO izmMüş FROM Müşteriler WHERE il='İzmir'
+SELECT * INTO ankMüş FROM Müşteriler WHERE il='Ankara'
+SELECT * FROM Müşteriler
+SELECT * FROM istMüş
+SELECT * FROM izmMüş
+SELECT * FROM ankMüş
