@@ -57,3 +57,28 @@ SELECT M.Adı+' '+M.Soyadı AS Müşteriler,
 C.Adı AS ÇalışanAdı,C.Soyadı AS ÇalışanSoyadı
 FROM Müşteriler AS M
 CROSS JOIN Çalışanlar AS C --1846
+
+
+CREATE VIEW tümMüşteriveSiparişleriGör
+AS
+  SELECT Adı,Soyadı,SiparişNo
+  FROM Müşteriler FULL OUTER JOIN Siparişler
+  ON Müşteriler.MüşteriNo = Siparişler.MüşteriNO
+  ORDER BY SiparişNo ASC
+  GO
+  SELECT * FROM tümMüşteriveSiparişleriGör
+  ORDER BY Adı ASC
+  --Bir VT nesnesini oluşturan sql ifadesini görmek için sistem saklı yordamlarından :
+  sp_helptext tümMüşteriveSiparişleriGör
+  -- nesneyi oluşturan sql scripti kriptolayarak gizleyebiliriz
+  -- Bunun için görünümü değiştirmemiz gerekir
+
+ALTER VIEW tümMüşteriveSiparişleriGör
+WITH ENCRYPTION
+AS
+  SELECT Adı,Soyadı,SiparişNo
+  FROM Müşteriler FULL OUTER JOIN Siparişler
+  ON Müşteriler.MüşteriNo = Siparişler.MüşteriNO
+  GO
+-- Görünümü silelim
+DROP VIEW tümMüşteriveSiparişleriGör
